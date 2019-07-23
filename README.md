@@ -19,9 +19,9 @@ This repository provides the necesary packages to reproduce our work on 'Learnin
 
 * [PCL1.8](https://gitlab.com/EAVISE/publicwiki/wikis/pcl-1.8-installation-ubuntu)
 
-* Download our [dataset] (https://paolaardon.github.io/grasp_affordance_reasoning/)
+* Download our [dataset](https://paolaardon.github.io/grasp_affordance_reasoning/)
 
-* If wanting to reproduce the work with the PR2, the following [repository] (https://github.com/PaolaArdon/pr2_kinetic_simulator) provides a guide on how to install the basics for reaching and grasping with the PR2 in ROS kinetic using different indoor scenes
+* If wanting to reproduce the work with the PR2, the following [repository](https://github.com/PaolaArdon/pr2_kinetic_simulator) provides a guide on how to install the basics for reaching and grasping with the PR2 in ROS kinetic using different indoor scenes
 
 ### The Modules
 * mln contains the instructions to learn from the  using Markov Logic Networks
@@ -30,4 +30,4 @@ This repository provides the necesary packages to reproduce our work on 'Learnin
 
 * sq_scene segments out the objects in the scene to be able to extract the grasping regions
 
-* Follow these [instructions] (http://pr.cs.cornell.edu/grasping/rect_data/data.php) to obtain grasping regions if using another dataset
+* Follow these [instructions](http://pr.cs.cornell.edu/grasping/rect_data/data.php) to obtain grasping regions if using another dataset
