@@ -1,0 +1,2 @@
+hasAffordance(x,x)
+graspRegion(x,x)

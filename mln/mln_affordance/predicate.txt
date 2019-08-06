@@ -1,0 +1,7 @@
+hasShape(cluster,shape)
+hasMaterial(cluster,material)
+hasTexture(cluster,texture)
+isA(cluster,category)
+hasAffordance(cluster,affordance)
+canBeFound(cluster,environment)
+graspRegion(cluster,region)
