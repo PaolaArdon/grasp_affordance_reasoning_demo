@@ -11,5 +11,8 @@ Matlab code to label and save grasping regions from depth images to point clouds
 * Organise your data into train, validation and test.
 * Run `labelling_grasping_regions.m` to start the labelling of your d-rgb images.
 
+## If using it with the PR2
+* The coordinates of the resulting grasping regions are to be input in the utils_grasp.py file to calculate the possible reaching approaches.
+
 
 
