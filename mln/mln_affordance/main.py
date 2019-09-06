@@ -10,6 +10,7 @@ from pracmln import MLN, Database, query
 from io import open
 import pickle
 import argparse
+import getopt
 #from numba import cuda
 
 class social_modelling():
@@ -72,8 +73,10 @@ class social_modelling():
         for i in formula:
             mln << i
             print('input formula successful :'+i)
+
         mln.write()
         mln.tofile(base_path + '/'+ mln_path)
+
         db = Database.load(mln,database)
         #db.write()
         #db.tofile(base_path + '/'+ db_path)
@@ -122,7 +125,7 @@ class social_modelling():
         print('finished...')
         return result
 
-    def inference(self, path, result, data, mln):
+    def inference(self, path,data, mln):
         """
         Returns the queries and probabilities
         --Inputs--
@@ -142,38 +145,34 @@ class social_modelling():
             print(query(queries=i.encode("ascii"), method='GibbsSampler', mln=mln, db=data, verbose=False, multicore=True).run().results) # check to change the method
           # #Other Methods: EnumerationAsk, MC-SAT, WCSPInference, GibbsSampler
 
-    def inference_str(self,string, result, data, mln):
-        print(query(queries=string, method='EnumerationAsk', mln=mln, db=data, verbose=True, multicore=False, save = True, output_filename=r'learnt.dbpll_cg.student-new-train-student-new-2.mln').run().results)
-        # save = True, output_filename=r'learnt.dbpll_cg.student-new-train-student-new-2.mln'
-
-
 if __name__ == '__main__':
 
     s=social_modelling()
-    #select_device(2)
-    predicate = s.read_predicate('predicate.txt')
-    formula = s.read_formula('formula.txt',predicate)
-    data,mln = s.model_config(predicate,formula,'data.txt','results.mln','results.db')
+    #select_device(2) # to work with GPU 2
 
-    with open('base.mln', 'wb') as base_mln_file:
-        pickle.dump(mln, base_mln_file)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-l", "--learn", help="learn with MLN", action="store_true")
+    parser.add_argument("-q", "--query", help="query MLN", action="store_true")
+    args = parser.parse_args()
 
-    output = s.activate_model(data,mln)
+    if args.learn:
+        print('you chose learn the weights for the mln')
+        predicate = s.read_predicate('predicate.txt')
+        formula = s.read_formula('formula.txt',predicate)
+        data,mln = s.model_config(predicate,formula,'data.txt','results.mln','results.db')
+        with open('base.mln', 'wb') as base_mln_file:
+             pickle.dump(mln, base_mln_file)
 
-    with open('base.output', 'wb') as base_output_file:
-        pickle.dump(mln, base_output_file)
+        output = s.activate_model(data,mln)
+        output.tofile(os.getcwd() + '/' + 'learnt_mln.mln')
+    elif args.query:
+        print('you chose to query the mln')
+        mln = MLN.load(files='formulas_Aug12.mln')
+        infer_world = Database.load(mln,'inference_data.txt')
+        s.inference('query.txt',infer_world,mln)
+    else:
+        print ('please input learn (-l) or query (-q) to proceed')
 
-    output.tofile(os.getcwd() + '/' + 'learnt_mln.mln')
-    #####s.inference_str('Smokes(ALEX)',output, data, mln)
-
-    with open('base.mln', 'rb') as base_mln_file:
-        mln = pickle.load(base_mln_file)
-
-    with open('base.output', 'rb') as base_output_file:
-        output = pickle.load(base_output_file)
-
-    infer_world = Database.load(mln,'inference_data.txt')
-    s.inference('query.txt',output,infer_world,mln)
 
 #query(queries='Cancer(x)', method='MC-SAT', mln=mln, db=data, verbose=False, multicore=True).run().results
 

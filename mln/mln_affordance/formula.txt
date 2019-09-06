@@ -1,4 +1,3 @@
+#unique{+?a,+?g}
 hasShape(?c,+?s) ^ hasMaterial(?c,+?m) ^ hasTexture(?c,+?t) ^ hasAffordance(?c,+?a) ^ graspRegion(?c, +?g)
-hasShape(?c, +?s) ^ hasMaterial(?c, +?m) ^ hasTexture(?c, +?t) ^ canBeFound(?c, +?e) ^ hasAffordance(?c, +?a) ^ graspRegion(?c, +?g)
-isA(?c, +?cat) ^ hasAffordance(?c, +?a) ^ graspRegion(?c, +?g)
-hasAffordance(?c, +?a) ^ graspRegion(?c, +?g)
+hasShape(?c, +?s) ^ isA(?c, +?cat) ^ canBeFound(?c, +?e) ^ hasAffordance(?c, +?a) ^ graspRegion(?c, +?g)

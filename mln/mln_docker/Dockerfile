@@ -96,4 +96,3 @@ ENV LD_LIBRARY_PATH /usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/l
 
 RUN conda install numba
 ADD /mln_affordance.tar.xz /home/mln_affordance &&/
-ADD /mln_smoker_scenario.tar.xz /home/mln_smoker_scenario

@@ -2,8 +2,8 @@
 * Install the mln libraries for python with `pip install pracmln` 
 
 ### To run the mln with python
-* To learn from a new database `python main.py`
-* To query from the trained model with the reasoning affordance database `python query.py`
+* To learn from a new database `python main.py -l`
+* To query from the trained model with the reasoning affordance database `python main.py -q`
 
 If you want to use your own database to train please check the .txt files and replicate the format for your DB.
 
