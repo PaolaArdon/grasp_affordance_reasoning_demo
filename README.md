@@ -30,4 +30,4 @@ This repository provides the necesary packages to reproduce our work on 'Learnin
 
 * sq_scene segments out the objects in the scene to be able to extract the grasping regions
 
-* Follow these [instructions](http://pr.cs.cornell.edu/grasping/rect_data/data.php) to obtain grasping regions if using another dataset
+* semantic_affordance_grasp_labels allows you to label and learn with your own data, and test images with our model
