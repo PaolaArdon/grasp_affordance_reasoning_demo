@@ -167,7 +167,7 @@ if __name__ == '__main__':
         output.tofile(os.getcwd() + '/' + 'learnt_mln.mln')
     elif args.query:
         print('you chose to query the mln')
-        mln = MLN.load(files='formulas_Aug12.mln')
+        mln = MLN.load(files='learnt_mln.mln')
         infer_world = Database.load(mln,'inference_data.txt')
         s.inference('query.txt',infer_world,mln)
     else:
